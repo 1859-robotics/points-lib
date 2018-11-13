@@ -22,8 +22,15 @@ all copies or substantial portions of the Software.
 
 ******************************************************************************/
 
+// utility
+#define CONCAT(A, B) A ## B
 // mimic malloc and free
 #define MAX_LIST_SIZE 32
+
+// for sake of visual seperation and human readability
+// this is completely optional however it is recomended that anyone using
+// this lib uses this when declaring points
+#define PT(a, b) a, b
 
 // node and node list structs
 typedef struct Node; // Node for forward referencing
@@ -199,3 +206,17 @@ void setNode(Node *node, int x, int y, Node *prev = NULL, Node *next = NULL) {
 	FOREACH(CONCAT("_TEMP_", __LINE__), func)
 
 //////////////////////////////////// END LIB ////////////////////////////////////
+
+#define DEBUG_POINTS
+#ifdef DEBUG_POINTS
+
+task main() {
+  FOREACH_ILN4(PT(1, 4), PT(4, 7), PT(1,3), PT(3, 5),
+    writePoint(nodePtr);
+    writeDebugStream("isHead: %s\n", (isHead ? "true" : "false"));
+    writeDebugStream("isTail: %s\n", (isTail ? "true" : "false"));
+  )
+  while(true) { wait1Msec(20) }
+}
+
+#endif
