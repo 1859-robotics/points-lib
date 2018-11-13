@@ -126,3 +126,16 @@ void deleteNode(NodeList *list, Node *obsoleteNode) {
     }
   }
 }
+
+
+// node manipulation
+void setNode(Node *node, int x, int y, Node *prev = NULL, Node *next = NULL) {
+  node->x = x;
+  node->y = y;
+  node->prev = prev;
+  node->next = next;
+}
+
+// create a new node
+#define NEW_NODE(name, x_val, y_val) Node name; \
+  setNode(name, x_val, y_val);
