@@ -43,9 +43,9 @@ typedef struct {
 
 
 void initNodeList(NodeList *list) {
-    list->head = NULL
-    list->tail = NULL
-    list->size = 0
+  list->head = NULL
+  list->tail = NULL
+  list->size = 0
 }
 
 
@@ -65,4 +65,12 @@ void FREE(Node *node) {
     }
   }
   writeDebugStreamLine("FREE: could not find node: %p", node);
+}
+
+// debug to write a point
+void writePoint(Node node) {
+  writeDebugStream("(%f, %f)\n", node.x, node.y);
+}
+void writePoint(Node *node) {
+  writeDebugStream("(%f, %f)\n", node->x, node->y);
 }
