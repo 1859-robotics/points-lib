@@ -74,3 +74,55 @@ void writePoint(Node node) {
 void writePoint(Node *node) {
   writeDebugStream("(%f, %f)\n", node->x, node->y);
 }
+
+
+// Special thanks to Xander Soldaat (xander_at_botbench.com)
+// for the linked list stuff. It isn't a 1-1 copy but it is very heavily
+// referenced from: http://botbench.com/blog/2013/01/31/tutorial-linked-lists-in-robotc/
+// node list manipulation functions
+// deleteNode is not technically needed however it is left in for prostarity
+void insertNode(NodeList *list, Node *newNode, Node *node = NULL) {
+  if (list->size == 0) {
+    list->head = newNode;
+    list->tail = newNode;
+    list->size++;
+  } else if (node == NULL) {
+    newNode->prev = list->tail;
+    list->tail->next = newNode;
+    list->tail = newNode;
+    list->size++;
+  } else {
+    newNode->next = node->next;
+    node->next = newNode;
+    if (list->tail == node) list->tail = newNode;
+    list->size++;
+  }
+}
+
+void deleteNode(NodeList *list, Node *obsoleteNode) {
+  Node *nodePtr;
+  if (list->size == 1) {
+    list->head = NULL;
+    list->tail = NULL;
+    list->size--;
+    FREE(obsoleteNode);
+  }else if (list->head == obsoleteNode) {
+    list->head = obsoleteNode->next;
+    list->size--;
+    FREE(obsoleteNode);
+    } else {
+    nodePtr = list->head;
+    while (nodePtr != NULL) {
+      if (nodePtr->next == obsoleteNode) {
+        if (obsoleteNode == list->tail) {
+          list->tail = nodePtr;
+        }
+        nodePtr->next = obsoleteNode->next;
+        list->size--;
+        FREE(obsoleteNode);
+        return;
+      }
+      nodePtr = nodePtr->next;
+    }
+  }
+}
