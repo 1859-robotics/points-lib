@@ -149,18 +149,18 @@ void setNode(Node *node, int x, int y, Node *prev = NULL, Node *next = NULL) {
 // inline node list creation macros
 //TODO: make this go up higher than 4
 #define NODE_LIST1(name, x1, y1) \
-                                NodeList name; \
-                                initNodeList(name); \
-                                INSERT_NODE(name, P1_TEMP, x1, y1);
+  NodeList name; \
+  initNodeList(name); \
+  INSERT_NODE(name, P1_TEMP, x1, y1);
 
 #define NODE_LIST2(name, x1, y1, x2, y2) \
-                                NODE_LIST1(name, x1, y1); \
-                                INSERT_NODE(name, P2_TEMP, x2, y2);
+  NODE_LIST1(name, x1, y1); \
+  INSERT_NODE(name, P2_TEMP, x2, y2);
 
 #define NODE_LIST3(name, x1, y1, x2, y2, x3, y3) \
-                                NODE_LIST2(name, x1, y1, x2, y2); \
-                                INSERT_NODE(name, P3_TEMP, x3, y3);
+  NODE_LIST2(name, x1, y1, x2, y2); \
+  INSERT_NODE(name, P3_TEMP, x3, y3);
 
 #define NODE_LIST4(name, x1, y1, x2, y2, x3, y3, x4, y4) \
-                                NODE_LIST3(name, x1, y1, x2, y2, x3, y3); \
-                                INSERT_NODE(name, P4_TEMP, x4, y4);
+  NODE_LIST3(name, x1, y1, x2, y2, x3, y3); \
+  INSERT_NODE(name, P4_TEMP, x4, y4);
