@@ -87,7 +87,6 @@ void writePoint(Node *node) {
 // for the linked list stuff. It isn't a 1-1 copy but it is very heavily
 // referenced from: http://botbench.com/blog/2013/01/31/tutorial-linked-lists-in-robotc/
 // node list manipulation functions
-// deleteNode is not technically needed however it is left in for prostarity
 void insertNode(NodeList *list, Node *newNode, Node *node = NULL) {
   if (list->size == 0) {
     list->head = newNode;
@@ -106,6 +105,7 @@ void insertNode(NodeList *list, Node *newNode, Node *node = NULL) {
   }
 }
 
+// deleteNode is not technically needed however it is left in for prostarity
 void deleteNode(NodeList *list, Node *obsoleteNode) {
   Node *nodePtr;
   if (list->size == 1) {
@@ -147,6 +147,11 @@ void setNode(Node *node, int x, int y, Node *prev = NULL, Node *next = NULL) {
 #define PT_LIST2 x1, y1, x2, y2
 #define PT_LIST3 x1, y1, x2, y2, x3, y3
 #define PT_LIST4 x1, y1, x2, y2, x3, y3, x4, y4
+
+#define PT_ARG_LIST1 float x1, float y1
+#define PT_ARG_LIST2 float x1, float y1, float x2, float y2
+#define PT_ARG_LIST3 float x1, float y1, float x2, float y2, float x3, float y3
+#define PT_ARG_LIST4 float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4
 
 // create a new node
 #define NEW_NODE(name, x_val, y_val) Node name; \
