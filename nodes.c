@@ -164,3 +164,19 @@ void setNode(Node *node, int x, int y, Node *prev = NULL, Node *next = NULL) {
 #define NODE_LIST4(name, x1, y1, x2, y2, x3, y3, x4, y4) \
   NODE_LIST3(name, x1, y1, x2, y2, x3, y3); \
   INSERT_NODE(name, P4_TEMP, x4, y4);
+
+
+// for each in a list do a func
+//TODO: make more params availible
+//NOTE: when porting to V5 this can be done with callbacks
+#define FOREACH(list, func) Node *nodePtr = list.head; \
+	while (nodePtr != NULL) { \
+    bool isHead = !!(nodePtr == list.head); \
+    bool isTail = !!(nodePtr == list.tail); \
+		func \
+		if (nodePtr == nodePtr->next) { \
+			nodePtr = NULL; \
+		} else { \
+			nodePtr = nodePtr->next; \
+		} \
+} \
