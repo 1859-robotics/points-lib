@@ -6,5 +6,6 @@ task main() {
     writeDebugStream("isHead: %s\n", (isHead ? "true" : "false"));
     writeDebugStream("isTail: %s\n", (isTail ? "true" : "false"));
   )
+  
   while(true) { wait1Msec(20) }
 }
