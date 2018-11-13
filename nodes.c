@@ -13,3 +13,10 @@ typedef struct {
 
     int size;
 } NodeList
+
+
+void initNodeList(NodeList *list) {
+    list->head = NULL
+    list->tail = NULL
+    list->size = 0
+}
