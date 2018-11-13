@@ -143,6 +143,11 @@ void setNode(Node *node, int x, int y, Node *prev = NULL, Node *next = NULL) {
   node->next = next;
 }
 
+#define PT_LIST1 x1, y1
+#define PT_LIST2 x1, y1, x2, y2
+#define PT_LIST3 x1, y1, x2, y2, x3, y3
+#define PT_LIST4 x1, y1, x2, y2, x3, y3, x4, y4
+
 // create a new node
 #define NEW_NODE(name, x_val, y_val) Node name; \
   setNode(name, x_val, y_val);
