@@ -180,3 +180,22 @@ void setNode(Node *node, int x, int y, Node *prev = NULL, Node *next = NULL) {
 			nodePtr = nodePtr->next; \
 		} \
 } \
+
+// foreach inline declaration of a list up to a list of length 4
+#define FOREACH_ILN1(x1, y1, func) \
+	NODE_LIST1(CONCAT("_TEMP_", __LINE__), x1, y1) \
+	FOREACH(CONCAT("_TEMP_", __LINE__), func)
+
+#define FOREACH_ILN2(x1, y1, x2, y2, func) \
+	NODE_LIST2(CONCAT("_TEMP_", __LINE__), x1, y1, x2, y2) \
+	FOREACH(CONCAT("_TEMP_", __LINE__), func)
+
+#define FOREACH_ILN3(x1, y1, x2, y2, x3, y3, func) \
+	NODE_LIST3(CONCAT("_TEMP_", __LINE__), x1, y1, x2, y2, x3, y3) \
+	FOREACH(CONCAT("_TEMP_", __LINE__), func)
+
+#define FOREACH_ILN4(x1, y1, x2, y2, x3, y3, x4, y4, func) \
+	NODE_LIST4(CONCAT("_TEMP_", __LINE__), x1, y1, x2, y2, x3, y3, x4, y4) \
+	FOREACH(CONCAT("_TEMP_", __LINE__), func)
+
+//////////////////////////////////// END LIB ////////////////////////////////////
